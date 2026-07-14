@@ -1,11 +1,309 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Loading...</title>
+    <title>YouTube</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            color: #202020;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            background-color: white;
+            border-bottom: 1px solid #e5e5e5;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .menu-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            margin-right: 16px;
+            cursor: pointer;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff0000;
+        }
+        
+        .search-bar {
+            flex: 1;
+            max-width: 640px;
+            display: flex;
+            margin: 0 40px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 8px 16px;
+            border: 1px solid #ccc;
+            border-radius: 2px 0 0 2px;
+            font-size: 16px;
+        }
+        
+        .search-btn {
+            background-color: #f8f8f8;
+            border: 1px solid #ccc;
+            border-left: none;
+            padding: 0 16px;
+            cursor: pointer;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            margin-left: 8px;
+            cursor: pointer;
+            padding: 8px;
+        }
+        
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #ff0000;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 16px;
+            cursor: pointer;
+        }
+        
+        .main-content {
+            display: flex;
+            padding: 24px;
+        }
+        
+        .sidebar {
+            width: 240px;
+            margin-right: 24px;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 24px;
+        }
+        
+        .sidebar-title {
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: #606060;
+            margin-bottom: 8px;
+            padding: 0 12px;
+        }
+        
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 0 12px 0 24px;
+            height: 40px;
+            cursor: pointer;
+        }
+        
+        .sidebar-item:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .sidebar-icon {
+            margin-right: 24px;
+            font-size: 20px;
+        }
+        
+        .content {
+            flex: 1;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .video-card {
+            cursor: pointer;
+        }
+        
+        .video-thumbnail {
+            width: 100%;
+            height: 160px;
+            background-color: #e0e0e0;
+            position: relative;
+            margin-bottom: 8px;
+        }
+        
+        .video-time {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 2px 4px;
+            font-size: 12px;
+            border-radius: 2px;
+        }
+        
+        .video-info {
+            display: flex;
+        }
+        
+        .channel-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            margin-right: 12px;
+        }
+        
+        .video-details {
+            flex: 1;
+        }
+        
+        .video-title {
+            font-weight: 500;
+            margin-bottom: 4px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        
+        .channel-name {
+            font-size: 14px;
+            color: #606060;
+            margin-bottom: 4px;
+        }
+        
+        .video-stats {
+            font-size: 14px;
+            color: #606060;
+        }
+    </style>
 </head>
 <body>
-    <h1>Please wait...</h1>
-    <p>You will be redirected shortly.</p>
+    <!-- YouTube Header -->
+    <div class="header">
+        <div class="header-left">
+            <button class="menu-btn"><i class="fas fa-bars"></i></button>
+            <div class="logo">
+                <span class="logo-text">YouTube</span>
+            </div>
+        </div>
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="header-right">
+            <button class="header-btn"><i class="fas fa-video"></i></button>
+            <button class="header-btn"><i class="fas fa-th"></i></button>
+            <button class="header-btn"><i class="fas fa-bell"></i></button>
+            <div class="user-avatar">U</div>
+        </div>
+    </div>
+
+    <!-- YouTube Main Content -->
+    <div class="main-content">
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-item">
+                    <i class="fas fa-home sidebar-icon"></i>
+                    <span>Home</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-compass sidebar-icon"></i>
+                    <span>Explore</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-play-circle sidebar-icon"></i>
+                    <span>Shorts</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-film sidebar-icon"></i>
+                    <span>Subscriptions</span>
+                </div>
+            </div>
+            <div class="sidebar-section">
+                <div class="sidebar-title">You</div>
+                <div class="sidebar-item">
+                    <i class="fas fa-user sidebar-icon"></i>
+                    <span>Your channel</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-history sidebar-icon"></i>
+                    <span>History</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-list sidebar-icon"></i>
+                    <span>Playlists</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-clock sidebar-icon"></i>
+                    <span>Watch later</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-thumbs-up sidebar-icon"></i>
+                    <span>Liked videos</span>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="video-grid">
+                <!-- Video Cards -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="video-time">10:23</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="channel-avatar"></div>
+                        <div class="video-details">
+                            <div class="video-title">Sample Video Title 1</div>
+                            <div class="channel-name">Channel Name</div>
+                            <div class="video-stats">1.2M views · 2 days ago</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Repeat video cards as needed -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="video-time">5:45</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="channel-avatar"></div>
+                        <div class="video-details">
+                            <div class="video-title">Sample Video Title 2</div>
     
     <script>
         // Function to get detailed IP information
